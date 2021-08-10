@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="5"
+        android:rowCount="5"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp">
+
+        <ImageButton
+            android:id="@+id/r"
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="95dp"
+            android:layout_height="96dp"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:background="#005D0FDC"
+            android:contentDescription="@string/right"
+            android:rotation="0"
+            android:rotationX="0"
+            android:rotationY="0"
+            android:scaleType="centerCrop"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            app:tint="#EA0A0A" />
+
+        <ToggleButton
+            android:id="@+id/transmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="@string/transmit" />
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="@string/connect"
+            app:backgroundTint="#00BCD4" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="262dp"
+            android:layout_height="109dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="@string/not_connected" />
+
+        <ImageButton
+            android:id="@+id/l"
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="95dp"
+            android:layout_height="96dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:background="#005D0FDC"
+            android:contentDescription="@string/left"
+            android:rotation="180"
+            android:rotationX="0"
+            android:rotationY="0"
+            android:scaleType="centerCrop"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            app:tint="#EA0A0A" />
+
+        <Button
+            android:id="@+id/tunes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:text="@string/tunes" />
+
+        <Button
+            android:id="@+id/beep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:text="@string/beep" />
+
+        <ImageButton
+            android:id="@+id/forward"
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="95dp"
+            android:layout_height="96dp"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:background="#005D0FDC"
+            android:contentDescription="@string/forward"
+            android:rotation="270"
+            android:rotationX="0"
+            android:rotationY="0"
+            android:scaleType="centerCrop"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            app:tint="#EA0A0A" />
+
+        <ImageButton
+            android:id="@+id/reverse"
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="95dp"
+            android:layout_height="96dp"
+            android:layout_row="3"
+            android:layout_column="4"
+            android:background="#005D0FDC"
+            android:contentDescription="@string/reverse"
+            android:rotation="90"
+            android:rotationX="0"
+            android:rotationY="0"
+            android:scaleType="centerCrop"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            app:tint="#EA0A0A" />
+    </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
