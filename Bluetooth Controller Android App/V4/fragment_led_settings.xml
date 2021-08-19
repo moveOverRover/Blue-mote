@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ledSettings"
+    android:clickable="true"
+    android:background="@color/cardview_dark_background">
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lable1"
+        android:max="254"/>
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lable2"
+        android:max="254"/>
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lable3"
+        android:max="254"/>
+
+    <TextView
+        android:id="@+id/lable1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Red"
+        android:gravity="center"
+        android:layout_below="@id/space" />
+
+    <TextView
+        android:id="@+id/lable2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Blue"
+        android:gravity="center"
+        android:layout_below="@id/seekBar"/>
+
+    <TextView
+        android:id="@+id/lable3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Green"
+        android:gravity="center"
+        android:layout_below="@id/seekBar2"/>
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/Mix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/partymix"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ToggleButton
+        android:id="@+id/lights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/togglebutton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Mix"/>
+
+    <Button
+        android:id="@+id/actionLights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action"
+        android:layout_toLeftOf="@id/Mix"/>
+
+    <Button
+        android:id="@+id/mixer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mixer"
+        android:layout_toRightOf="@id/Mix"/>
+
+</RelativeLayout>
