@@ -36,14 +36,14 @@
             android:id="@+id/toLedFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toledfragment"
+            android:text="@string/led_settings"
             android:layout_below="@id/set_origin"/>
 
         <Button
             android:id="@+id/function_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/function2"
+            android:text="@string/baby_mode"
             android:layout_below="@id/set_origin"
             android:layout_toRightOf="@id/toLedFragment"/>
 

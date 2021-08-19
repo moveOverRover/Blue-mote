@@ -38,12 +38,15 @@ public class UIHandler extends AppCompatActivity {
     private float y = 0;
     private boolean btnPressed = false;
     private boolean runOnce = false;
+    private boolean babyMode = false;
     private final SharedPreferences sharedPref;
     private final Activity activity;
     private final float x_dis = 300;
     private final float y_dis = 300;
     private final float joystick_offset = -70;
     private final float pad_offset = -200 + joystick_offset;
+    private float outMin = 0;
+    private float outMax = 255;
 
     UIHandler(Activity activity) {
         this.activity = activity;
@@ -54,7 +57,7 @@ public class UIHandler extends AppCompatActivity {
     }
     // TODO fix the bad messages that happen at 255
     public void map(){
-        float temp = bitBlaster.map(JoyStick.getY(), yOrigin-y_dis+joystick_offset, yOrigin+y_dis+joystick_offset, 0, 255);
+        float temp = bitBlaster.map(JoyStick.getY(), yOrigin-y_dis+joystick_offset, yOrigin+y_dis+joystick_offset, outMin, outMax);
         temp = (temp-255)*-1;
         if ((int)temp >= 255){ // for some reason it dont work when sending a 255 byte
             temp = 255-1;
@@ -193,18 +196,24 @@ public class UIHandler extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     public void setFunction2() {
-        function2 = (Button)activity.findViewById(R.id.function_2);
-        function2.setOnTouchListener((v, event) -> {
-            //if (event.getAction() == MotionEvent.ACTION_DOWN){
-            //    bitBlaster.writeIntegerValue(1,2);
-            //} else if (event.getAction() == MotionEvent.ACTION_UP){
-            //    bitBlaster.writeIntegerValue(0,2);
-            //}
-            //bitBlaster.changeInstruction("1A_3L");
-            //txt.setText(bitBlaster.readValues(4));
-            //txt.append('\n' + bitBlaster.getStringMessage());
-            return true;
+        function2 = activity.findViewById(R.id.function_2);
+        function2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (babyMode){
+                    function2.setText("Baby Mode");
+                    babyMode = false;
+                    outMin = 0;
+                    outMax = 255;
+                } else {
+                    function2.setText("Butterscotch");
+                    babyMode = true;
+                    outMin = 50;
+                    outMax = 204;
+                }
+            }
         });
+
     }
 
     public void setTransmit() {
@@ -219,8 +228,6 @@ public class UIHandler extends AppCompatActivity {
                     q=0;
                     bitBlaster.writeIntegerValue(0,6);
                 }
-                //bitBlaster.changeInstruction("1A_3L");
-                //txt.append('\n' + bitBlaster.getStringMessage());
             }
         });
     }

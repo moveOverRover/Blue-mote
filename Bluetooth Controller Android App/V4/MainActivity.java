@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    byte [] myBytes = new byte[5];
     private final Runnable brodcast = new Runnable(){
         @Override
         public void run() {
