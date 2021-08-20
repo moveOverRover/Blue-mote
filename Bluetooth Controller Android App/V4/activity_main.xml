@@ -131,8 +131,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:indeterminate="false"
-                android:max="25"
-                android:progress="20"
+                android:max="5"
+                android:progress="3"
                 android:progressDrawable="@drawable/custom_progress_voltage"/>
 
             <TextView

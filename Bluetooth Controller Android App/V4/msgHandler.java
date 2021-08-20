@@ -2,9 +2,9 @@ package com.example.bluetoothshenenagans4;
 
 // Butter Scotch Protocol:
 // each capital letter is a nibble, lowercase is a bit, * is multiplication
-// by Bytes:                            AA BxxxC DD 1-250*EE FF FF
-//                AA     B             xxxc              DD           1-250* EE        FF FF
-//   message length^ | ID^ | Received bit?^ | message type^ | message contents^ | check sum^
+// by Bytes:                            AA AA Bxxxc DD 1-250*EE FF FF
+//                AA                AA     B             xxxc              DD           1-250* EE        FF FF
+//   message length^ | message length^ | ID^ | Received bit?^ | message type^ | message contents^ | check sum^
 
 import android.content.SharedPreferences;
 
@@ -13,18 +13,19 @@ import java.net.BindException;
 import java.util.HashMap;
 
 public class msgHandler implements Serializable {
-    private final int ADDR_LENG = 0; // address of the length identifier
-    private final int ADDR_ID = 1; // address of the ID
-    private final int ADDR_TYPE = 2; // address of the message type
-    private final int ADDR_CONT = 3; // address of the contents of the message
-    private final int SIZE_CONST = 5; // the size of the everything but the message
+    private final int ADDR_LENGA = 0; // address of the length identifier
+    private final int ADDR_LENGB = 1; // address of the repeated length identifier
+    private final int ADDR_ID = 2; // address of the ID
+    private final int ADDR_TYPE = 3; // address of the message type
+    private final int ADDR_CONT = 4; // address of the contents of the message
+    private final int SIZE_CONST = 6; // the size of the everything but the message
     private final int SIZE_CHECKSUM = 2; // the size of the checksum
     private final byte ID = 0x10; // the id of this device
     private byte recivedlast = 0x00; // last message received? 0x01 : 0x00
     private HashMap<String,Integer> type_lookup; // all possible instructions that can be added to the message
     private HashMap<String,Integer> size_lookup; // the sizes of the messages
     private final String [] lookupStrings = {"1A_3L","3T_1V"}; // add new commands to this array as necessary
-    private final int [] lookupSizes = {12,9}; // add new commands to this array as necessary
+    private final int [] lookupSizes = {13,10}; // add new commands to this array as necessary
     private byte [] message;  // the whole message we want to send
     private byte [] received; // the whole received message
     private int [] partner; // contains decoded info about the partner
@@ -118,19 +119,18 @@ public class msgHandler implements Serializable {
 
     public String readInstruction(byte [] bytes, int length){
         String toReturn = new String("");
-        for (int i=0; i<length; i++){ // reads the bytes buffer into the received message
-            if (i>255){
-                break; //for safety
-            }
-            received[i] = bytes[i];
-        }
-        if (length == (int) bytes2Int(received,1+ADDR_LENG,ADDR_LENG)){
+
+        if (bytes[ADDR_LENGA] == bytes[ADDR_LENGB]){
             toReturn += "Length Passed";
+            length = (int) bytes2Int(bytes, 1+ADDR_LENGA, ADDR_LENGA);
         } else {
-            toReturn += ", Length Failed: " + bytes2Int(received,1+ADDR_LENG,ADDR_LENG) + "/" + length;
+            toReturn += ", Length Failed: " + bytes2Int(bytes,1+ADDR_LENGA,ADDR_LENGA) + "/" + bytes2Int(bytes, 1+ADDR_LENGB, ADDR_LENGB);
             recivedlast = 0x00;
             lengthMistakes++;
             return toReturn;
+        }
+        for (int i=0; i<length; i++){ // reads the bytes buffer into the received message
+            received[i] = bytes[i];
         }
         if (cSum(received,length-SIZE_CHECKSUM) == bytes2Int(received,2+length-SIZE_CHECKSUM,length-SIZE_CHECKSUM)){ // checks checksum
             toReturn += ", Checksum Passed";
@@ -143,7 +143,8 @@ public class msgHandler implements Serializable {
         recivedlast = 0x01;
 
         // gets all the easy stuff
-        partner[ADDR_LENG] = (int) bytes2Int(received, 1+ADDR_LENG, ADDR_LENG);
+        partner[ADDR_LENGA] = (int) bytes2Int(received, 1+ADDR_LENGA, ADDR_LENGA);
+        partner[ADDR_LENGB] = (int) bytes2Int(received, 1+ADDR_LENGB, ADDR_LENGB);
         partner[ADDR_ID] = (int) bytes2Int(received, 1+ADDR_ID, ADDR_ID);
         partner[ADDR_TYPE] = (int) bytes2Int(received, 1+ADDR_TYPE, ADDR_TYPE);
         partner[ADDR_CONT] = cSum(received,length-SIZE_CHECKSUM);
@@ -156,7 +157,8 @@ public class msgHandler implements Serializable {
         int j;
         int size = size_lookup.get(instruction);
         message[ADDR_ID] = (byte) (ID|recivedlast); // updates the ID byte
-        int2Bytes(size, message,1, ADDR_LENG); // updates the length identifier
+        int2Bytes(size, message,1, ADDR_LENGA); // updates the length identifier
+        int2Bytes(size, message,1, ADDR_LENGB); // updates the length identifier
         int2Bytes(type_lookup.get(instruction), message, 1, ADDR_TYPE); // updates the type identifier
 
         for (int i=0; i<size-SIZE_CONST; i++){
@@ -277,7 +279,7 @@ public class msgHandler implements Serializable {
         received = new byte[255];
     }
     public void setPartner () {
-        partner = new int[4];
+        partner = new int[5];
     }
     public void setValues () {
         values = new int[250];
@@ -341,7 +343,7 @@ public class msgHandler implements Serializable {
     }
 
     public String toString(){
-        String toReturn = "ID: " + partner[ADDR_ID] + ", SIZE: " + partner[ADDR_LENG] + ", CHECKSUM: " + partner[ADDR_CONT] + ", Contents: " + readStringValue(0,partner[ADDR_LENG]-SIZE_CONST);
+        String toReturn = "ID: " + partner[ADDR_ID] + ", SIZE: " + partner[ADDR_LENGA] + ", CHECKSUM: " + partner[ADDR_CONT] + ", Contents: " + readStringValue(0,partner[ADDR_LENGA]-SIZE_CONST);
         return toReturn;
     }
 

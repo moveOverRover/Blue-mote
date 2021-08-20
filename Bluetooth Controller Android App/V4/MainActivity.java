@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity{
                         UI.getTextView().setText("Length Errors Caught: " + bHandle.getBitBlaster().getLengthMistakes() + ", Corruption Errors Caught: " + bHandle.getBitBlaster().getChecksumMistakes());
                         UI.getMotorTemp().setProgress(averageTemp/rate);
                         UI.getTemp().setText("Motor: " + averageTemp/rate);
-                        UI.getBatteryVoltage().setProgress((int)(averageVoltage/rate));
-                        UI.getVoltage().setText(averageVoltage + " V");
+                        UI.getBatteryVoltage().setProgress((int)bHandle.getBitBlaster().map(averageVoltage/rate, 20, (float) 25.3, 0, 5));
+                        UI.getVoltage().setText(averageVoltage/rate  + " V");
                         //UI.getTextView().append("\n" + lastData);
                         UI.getTextView().append("\n sent: " + sent + ", received: " + received + ", badReturns: "+ badReturns);
                         averageTemp = 0;
