@@ -10,5 +10,5 @@ Because of these changes this version of the app should* fit on any phone screen
 We are still using the miniJeep3 message frame as well.
 
 <img src="https://user-images.githubusercontent.com/77077715/131576468-0c97a087-06a2-420c-bc0c-42121d4ef9e2.jpg" alt="Screenshot_20210810-084741_BluetoothShenanegans2" width="250" height="500">
-<img src"https://user-images.githubusercontent.com/77077715/131576480-4bcd2dec-e274-40a8-bfd9-8f6e507c0b82.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="250" height="500">
+<img src="https://user-images.githubusercontent.com/77077715/131576480-4bcd2dec-e274-40a8-bfd9-8f6e507c0b82.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="250" height="500">
 
