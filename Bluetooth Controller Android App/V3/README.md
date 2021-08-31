@@ -7,5 +7,5 @@ Some strange looking offsets had to made becuase of this and it interfeared with
 Other than that pretty similar to V2.
 I did clean up the UI and switched it to a realtive layout. I Also impletment some new features like toasts and an option to set the origin of the joystick anywhere onthe screen.
 Becuase of these changes this version of the app should* fit on any phone screen unlike the last one.
-We are still using the miniJeep3 message frame as well.![Screenshot_20210810-084741_BluetoothShenanegans2](https://user-images.githubusercontent.com/77077715/131576468-0c97a087-06a2-420c-bc0c-42121d4ef9e2.jpg)=250x250
+We are still using the miniJeep3 message frame as well.![Screenshot_20210810-084741_BluetoothShenanegans2](https://user-images.githubusercontent.com/77077715/131576468-0c97a087-06a2-420c-bc0c-42121d4ef9e2.jpg =250x250)
 ![Screenshot_20210810-084846_BluetoothShenanegans3](https://user-images.githubusercontent.com/77077715/131576480-4bcd2dec-e274-40a8-bfd9-8f6e507c0b82.jpg)
