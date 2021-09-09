@@ -9,7 +9,7 @@ I dig into parity, checksums, message frames, and end up making something like m
 
 In the end I belive the problem was my placing long wires in noisy enviroments between the simpler UART interfaces that was giving me the probelem (1 parity bit might not be enough with a 2kw motor next to it). It was either that or a missunderstanding of how arduino's/HC-05 input buffers work becuase sometimes they would give me unresonable values.
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/77077715/131572858-0042a2dc-f131-4f49-9988-6e2b3c36643f.jpg" alt="Screenshot_20210810-084741_BluetoothShenanegans2" width="500" height="500">
-  <img src="https://user-images.githubusercontent.com/77077715/131572917-9a2d0284-0e52-46be-9a64-12a8adf8330e.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="400" height="500">
+  <img src="https://user-images.githubusercontent.com/77077715/131572858-0042a2dc-f131-4f49-9988-6e2b3c36643f.jpg" alt="Screenshot_20210810-084741_BluetoothShenanegans2" width="400" height="400">
+  <img src="https://user-images.githubusercontent.com/77077715/131572917-9a2d0284-0e52-46be-9a64-12a8adf8330e.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="400" height="400">
 </p>
 
