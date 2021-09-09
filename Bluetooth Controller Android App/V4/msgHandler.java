@@ -89,7 +89,6 @@ public class msgHandler implements Serializable {
         float right = (float) bytes2Int(received, size-2+index+ADDR_CONT, index+ADDR_CONT);
         float left = (float) bytes2Int(received, size+index+ADDR_CONT, index+ADDR_CONT+size-2);
         left = (float) (left/10000.0);
-
         return right + left;
     }
 
@@ -120,7 +119,7 @@ public class msgHandler implements Serializable {
     public String readInstruction(byte [] bytes, int length){
         String toReturn = new String("");
 
-        if (bytes[ADDR_LENGA] == bytes[ADDR_LENGB]){
+        if (length == (int)bytes2Int(bytes, ADDR_LENGB+1, ADDR_LENGB)){
             toReturn += "Length Passed";
             length = (int) bytes2Int(bytes, 1+ADDR_LENGA, ADDR_LENGA);
         } else {
@@ -143,12 +142,11 @@ public class msgHandler implements Serializable {
         recivedlast = 0x01;
 
         // gets all the easy stuff
-        partner[ADDR_LENGA] = (int) bytes2Int(received, 1+ADDR_LENGA, ADDR_LENGA);
-        partner[ADDR_LENGB] = (int) bytes2Int(received, 1+ADDR_LENGB, ADDR_LENGB);
+        partner[ADDR_LENGA] = length;
+        partner[ADDR_LENGB] = length;
         partner[ADDR_ID] = (int) bytes2Int(received, 1+ADDR_ID, ADDR_ID);
         partner[ADDR_TYPE] = (int) bytes2Int(received, 1+ADDR_TYPE, ADDR_TYPE);
         partner[ADDR_CONT] = cSum(received,length-SIZE_CHECKSUM);
-
         return toReturn;
     }
 

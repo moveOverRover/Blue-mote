@@ -72,12 +72,25 @@ public class BlueHandler {
 
     public String btRead() {
         int counter = 0;
+        int counter2 = 0;
         try {
-            counter = in.read(reads);
+            counter = in.read();
+            counter2 = in.read();
+            if (counter == counter2){
+                bitBlaster.int2Bytes(counter, reads, 1, 0);
+                bitBlaster.int2Bytes(counter, reads, 1, 1);
+                for(int i=2; i<counter; i++){
+                    bitBlaster.int2Bytes(in.read(), reads, 1, i);
+                }
+            } else {
+                return bitBlaster.readInstruction(reads, 0);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
             return "Error 3";
         }
+
         return bitBlaster.readInstruction(reads,counter);
     }
 

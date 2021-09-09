@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity{
             mHandler.postDelayed(this,40);
             if (bHandle.isAvailable() > 0){
                 received++;
+                //UI.getTextView().setText("" + bHandle.btRead());
                 if(bHandle.btRead().equals("Length Passed, Checksum Passed")){
                     if (bHandle.getBitBlaster().getPartner()[1] == 48) {
                         badReturns++;
