@@ -1,10 +1,7 @@
 /* author: Alex Semenov
-  Third resonable working version
-  Reads more data at a lower resolution and along with the checksum this greatly improves the speed (by about 4x)
-  Dosent use all data recived so that the remote can send every input it has and only some need to be used by the reciver
-  Uses a checksum to determine the integrity of hte message
-  Kill swith is integrated
-  Made the intterupt contain siginicantly less code and switch varriables moddifed in the intterupt to volatle
+  Forth resonable working version
+  Very simmialr to the third version but now we attempt to talk back to the controller with some data. Never was used after I made this I quickly tranitioned
+  to using Butter Scotch after this was complete.
 */
 #define INC_MSG 7 // size of the incomming message
 #define OUT_MSG 5 // size of the outgoing message
