@@ -1,2 +1,2 @@
 # All arduino code lives here
-At the time of writing all of this code is legacy material
+As of 2021-09-09 all of this code is legacy
