@@ -7,6 +7,6 @@ UI was not great and everything was on a realtive layout, But it did work howeve
 The next version improved on alot of the short commings of this such as analog imputs and better UI.
 <p float="left">
   <img src="https://user-images.githubusercontent.com/77077715/131574070-fbb8e536-4c2b-4103-8a5e-a463e6f94c26.jpg" alt="Screenshot_20210810-084741_BluetoothShenanegans2" width="250" height="500">
-  <img src="https://user-images.githubusercontent.com/77077715/131574066-ded6d2cb-2d86-47ab-a727-4f6e225476fc.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="750" height="300">
+  <img src="https://user-images.githubusercontent.com/77077715/131574066-ded6d2cb-2d86-47ab-a727-4f6e225476fc.jpg" alt="Screenshot_20210810-084846_BluetoothShenanegans3" width="500" height="250">
 </p>
 
