@@ -1,5 +1,5 @@
 # Blue-mote
-This contains my the stl files, code, and media for my bluetooth remote project. But has more recently been taken over by my adventures of creating an android application to replace the remote.
+This contains my the stl files, code, and media for my bluetooth remote project. But has more recently been taken over by my adventures of creating an android application to replace the remote (please do have a look at that, its pretty cool).
   
 I started this project well over a year ago and it taught me alot, certainly more than I want to write in this read me. Visting the code of each project version will provide a more deeper dive into the challanges and victories I found.
 
