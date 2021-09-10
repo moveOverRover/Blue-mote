@@ -1,3 +1,4 @@
+# V2
 Very first working version of the bluetooth app.
 
 Used digital button inputs to emulate the message frame that minijeep3 was receiving (check out moveOverRover/Blue-mote/code for more details).
